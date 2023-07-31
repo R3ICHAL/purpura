@@ -1,0 +1,983 @@
+:root, .theme-dark, .theme-light, * {
+    --br-1: 10px;
+    --br-2: 7px;
+    --br-3: 5px;
+
+    --p-1: 8px;
+
+    --font-primary: "Source Sans Pro", sans-serif;
+    --font-code: "Fira Code", sans-serif;
+    --font-display: "Commissioner", sans-serif;
+    --font-headline: "Commissioner", sans-serif;
+}
+
+/*  Animations  */
+
+@keyframes popin {
+    0% {
+        transform: scale(0.3);
+    }
+    70% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/*  --------  */
+
+path[d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7v-5z"] {
+    d: path("M18 4H17V3C17 2.73478 16.8946 2.48043 16.7071 2.29289C16.5196 2.10536 16.2652 2 16 2C15.7348 2 15.4804 2.10536 15.2929 2.29289C15.1054 2.48043 15 2.73478 15 3V4H9V3C9 2.73478 8.89464 2.48043 8.70711 2.29289C8.51957 2.10536 8.26522 2 8 2C7.73478 2 7.48043 2.10536 7.29289 2.29289C7.10536 2.48043 7 2.73478 7 3V4H6C5.20435 4 4.44129 4.31607 3.87868 4.87868C3.31607 5.44129 3 6.20435 3 7V19C3 19.7956 3.31607 20.5587 3.87868 21.1213C4.44129 21.6839 5.20435 22 6 22H18C18.7956 22 19.5587 21.6839 20.1213 21.1213C20.6839 20.5587 21 19.7956 21 19V7C21 6.20435 20.6839 5.44129 20.1213 4.87868C19.5587 4.31607 18.7956 4 18 4V4ZM6 6H7V7C7 7.26522 7.10536 7.51957 7.29289 7.70711C7.48043 7.89464 7.73478 8 8 8C8.26522 8 8.51957 7.89464 8.70711 7.70711C8.89464 7.51957 9 7.26522 9 7V6H15V7C15 7.26522 15.1054 7.51957 15.2929 7.70711C15.4804 7.89464 15.7348 8 16 8C16.2652 8 16.5196 7.89464 16.7071 7.70711C16.8946 7.51957 17 7.26522 17 7V6H18C18.2652 6 18.5196 6.10536 18.7071 6.29289C18.8946 6.48043 19 6.73478 19 7V11H5V7C5 6.73478 5.10536 6.48043 5.29289 6.29289C5.48043 6.10536 5.73478 6 6 6V6ZM18 20H6C5.73478 20 5.48043 19.8946 5.29289 19.7071C5.10536 19.5196 5 19.2652 5 19V13H19V19C19 19.2652 18.8946 19.5196 18.7071 19.7071C18.5196 19.8946 18.2652 20 18 20Z M8 17C8.55228 17 9 16.5523 9 16C9 15.4477 8.55228 15 8 15C7.44772 15 7 15.4477 7 16C7 16.5523 7.44772 17 8 17Z M16 15H12C11.7348 15 11.4804 15.1054 11.2929 15.2929C11.1054 15.4804 11 15.7348 11 16C11 16.2652 11.1054 16.5196 11.2929 16.7071C11.4804 16.8946 11.7348 17 12 17H16C16.2652 17 16.5196 16.8946 16.7071 16.7071C16.8946 16.5196 17 16.2652 17 16C17 15.7348 16.8946 15.4804 16.7071 15.2929C16.5196 15.1054 16.2652 15 16 15Z");
+}
+
+path[d="M18.4 4L12 10.4L5.6 4L4 5.6L10.4 12L4 18.4L5.6 20L12 13.6L18.4 20L20 18.4L13.6 12L20 5.6L18.4 4Z"] {
+    d: path("M13.41 12L17.71 7.71C17.8983 7.5217 18.0041 7.2663 18.0041 7C18.0041 6.7337 17.8983 6.47831 17.71 6.29C17.5217 6.1017 17.2663 5.99591 17 5.99591C16.7337 5.99591 16.4783 6.1017 16.29 6.29L12 10.59L7.71 6.29C7.5217 6.1017 7.2663 5.99591 7 5.99591C6.7337 5.99591 6.4783 6.1017 6.29 6.29C6.1017 6.47831 5.99591 6.7337 5.99591 7C5.99591 7.2663 6.1017 7.5217 6.29 7.71L10.59 12L6.29 16.29C6.19627 16.383 6.12188 16.4936 6.07111 16.6154C6.02034 16.7373 5.9942 16.868 5.9942 17C5.9942 17.132 6.02034 17.2627 6.07111 17.3846C6.12188 17.5064 6.19627 17.617 6.29 17.71C6.38296 17.8037 6.49356 17.8781 6.61542 17.9289C6.73728 17.9797 6.86799 18.0058 7 18.0058C7.13201 18.0058 7.26272 17.9797 7.38458 17.9289C7.50644 17.8781 7.61704 17.8037 7.71 17.71L12 13.41L16.29 17.71C16.383 17.8037 16.4936 17.8781 16.6154 17.9289C16.7373 17.9797 16.868 18.0058 17 18.0058C17.132 18.0058 17.2627 17.9797 17.3846 17.9289C17.5064 17.8781 17.617 17.8037 17.71 17.71C17.8037 17.617 17.8781 17.5064 17.9289 17.3846C17.9797 17.2627 18.0058 17.132 18.0058 17C18.0058 16.868 17.9797 16.7373 17.9289 16.6154C17.8781 16.4936 17.8037 16.383 17.71 16.29L13.41 12Z");
+}
+
+.messageContent-2t3eCI:hover .timestamp-p1Df1m {
+    opacity: 100!important;
+}
+
+.messageContent-2t3eCI .timestamp-p1Df1m {
+    opacity: 0!important;
+}
+
+.wordmarkWindows-2dq6rw svg {
+    display:none;
+}
+
+.wordmarkWindows-2dq6rw::before {
+    display: inline-block;
+    content: "Discord";
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: 0.25px;
+    padding: 2px;
+    font-family: var(--font-display);
+}
+
+.wordmarkWindows-2dq6rw::after {
+    display: inline-block;
+    content: "Purpura";
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.25px;
+    padding: 2px;
+    font-family: var(--font-display);
+}
+
+.barBase-3xxDXu {
+    border-radius: var(--br-1)!important;
+    margin-bottom: 12px;
+    padding-bottom: 3px;
+}
+
+.container-2cd8Mz {
+    margin-right: var(--br-1)!important;
+}
+
+.selected-g-kMVV {
+    font-weight: 600;
+}
+
+.panels-3wFtMD {
+    padding: 3px;
+    background-color: var(--background-secondary);
+}
+
+#floating-editor-window, .floating-window {
+    z-index: 99999!important;
+}
+
+.controlButton-2PMNom {
+    border-radius: 100px!important;
+}
+
+.input-3r5zZY {
+    border-radius: var(--br-1);
+    text-align: center;
+    font-family: var(--font-display)!important;
+}
+
+.quickswitcher-pKcM9U {
+    font-family: var(--font-display);
+    animation-name: popin;
+    animation-duration: 0.3s;
+}
+
+.root-g14mjS {
+    animation-name: popin;
+    animation-duration: 0.3s;
+}
+
+.menu-1QACrS {
+    animation-name: popin;
+    animation-duration: 0.2s;
+}
+
+.searchBar-3TnChZ, .searchBarComponent-3N7dCG {
+    text-align: center!important;
+    font-family: var(--font-display);
+}
+
+.result-u66Ywh, .guildIconContainer-14mmC9 .icon-1zKOXL {
+    border-radius: var(--br-2)!important;
+}
+
+.messagesPopout-eVzQcI .messageGroupWrapper-1jf_7C {
+    border-radius: var(--br-2);
+    border: none;
+}
+
+.footer-1hTRRZ {
+    background-color: var(--background-primary)!important;
+}
+
+
+
+.connectionHeader-Ixbb1s {
+    background: transparent;
+}
+
+.connectContainer-1hylYM {
+    background-color: var(--background-secondary);
+}
+
+.dropCriteria-UN2xbq {
+    background-color: var(--background-secondary);
+}
+
+.dropContainer-2rTNFx {
+    border-radius: var(--br-1);
+}
+
+.codeRedemptionRedirect-2hYMSQ {
+    background-color: var(--background-secondary)!important;
+}
+
+.autocomplete-3NRXG8 {
+    background-color: var(--background-secondary)!Important;
+}
+
+.categoryHeader-OpJ1Ly {
+    background-color: transparent;
+}
+
+.base-2v-uc0 {
+    border-radius: var(--br-2);
+}
+
+.newMessagesBar-1hF-9G {
+    margin-top: 5px;
+    border-radius: var(--br-2);
+}
+
+.container-2qVG6q.mainCard-3KBsBI, .container-2_J666 .wrapper-2O6Aho, .mainCard-3KBsBI.header-1Uy0p6 {
+    border: solid 2px var(--background-accent);
+    border-radius: var(--br-1);
+}
+
+.container-3wLKDe {
+    background-color: var(--background-primary)!important;
+}
+
+.layer-1Ixpg3, .wrapper-3ByaVZ, .focusLock-2tveLW, .modal-atz_3z, .root-g14mjS, .footer-1hTRRZ {
+    border-color: var(--background-primary)!important;
+}
+
+.perksModal-CLcR1c {
+    background-color: var(--background-primary);
+}
+
+.tier2HeaderBackgroundWinterTheme-Mqc76o {
+    border-radius: var(--br-1) var(--br-1) 0px 0px;
+}
+
+.welcomeCTA-3GMMRK:hover .lookFilled-yCfaCM.colorPrimary-2AuQVo:hover {
+    background-color: var(--button-secondary-background-hover);
+}
+
+.messagesPopoutWrap-3zryHW {
+    border-radius: var(--br-2);
+}
+
+.footer-5ji8u1 {
+    background-color: var(--background-secondary-alt);
+}
+
+.messagesPopoutWrap-3zryHW .header-1w9Q93 {
+    background-color: var(--background-secondary);
+    box-shadow: none;
+}
+
+.typeWindows-2-g3UY {
+    padding-bottom: 3px;
+}
+
+.sidebar-1tnWFu {
+    margin-right: var(--p-1);
+}
+
+.bannerImage-ubW8K-, .animatedContainer-2laTjx, .sidebar-1tnWFu, .container-1NXEtd, .container-1-ERn5, .container-2Y4CWj {
+    border-top-right-radius: var(--br-1)!important;
+    border-top-left-radius: var(--br-1)!important;
+}
+
+.chat-2ZfjoI {
+    border-top-right-radius: var(--br-1)!important;
+    border-top-left-radius: var(--br-1)!important;
+    margin-right: var(--p-1);
+}
+
+.background-fkKrXt {
+    background-color: var(--background-secondary)!important;
+}
+
+.container-YkUktl {
+    background-color: var(--background-secondary);
+    box-shadow: -5px -10px 10px var(--background-secondary);
+}
+
+.roleInner-Cc7SzS {
+    font-family: var(--font-display);
+    font-size: 14px;
+}
+
+.role-3pGE29 {
+    margin-bottom: 5px!important;
+}
+
+.overflowRolesPopout-1Puiuq {
+    border-radius: var(--br-2);
+}
+
+.title-1xkCwl .guildName-w_bHBA {
+    font-family: var(--font-display);
+}
+
+.bannedUser-26qsXF.card-2ART2V {
+    padding-left: 20px;
+    margin-left: -10px;
+}
+
+.bannedUser-26qsXF.card-2ART2V:hover {
+    background-color: var(--background-secondary);
+    padding-left: 20px;
+    margin-left: -10px;
+    border-radius: var(--br-2);
+    border: none!important;
+}
+
+.staticToolbar-x12NJC {
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.staticToolbar-x12NJC .button-lA2rvH {
+    border-radius: var(--br-3)!important;
+}
+
+.auditLog-1NVAY0, .imageUploaderFileInput-18YkLC, .welcomeChannel-_Q4qAA, .button-f2h6uQ, .file-input, .insightsNoticeContainer-2ZrM4d, .staticToolbar-x12NJC {
+    border-radius: var(--br-2)!important;
+}
+
+.header-2pgFQm {
+    margin-top: -1px;
+    border-radius: var(--br-2);
+}
+
+.changeDetails-1kMZqI, .footer-31IekZ {
+    border-radius: 0px 0px var(--br-2) var(--br-2);
+}
+
+.headerExpanded-1-zwDr {
+    border-radius: var(--br-2) var(--br-2) 0px 0px;
+}
+
+.card-3JmxsM, .card-7AB4HE {
+    border-radius: var(--br-1);
+    border-color: transparent!important;
+}
+
+.replyBar-1oi75v {
+    padding-bottom: 20px;
+    margin-bottom: -20px;
+}
+
+.previewContainer-1xQAsw .theme-light {
+    display: none;
+}
+
+.customColorPicker-C_jddW {
+    border-radius: var(--br-1);
+}
+
+.copyInput-3AbKWB, .tier-3CS7-p, .tierHeaderWithoutCardBody-1iT8o_, .tierHeaderContent-2SPBAA, .saturation-CLQHFD, .previewContainer-1xQAsw, .radioBar-3w9XY-, .item-2idW98, .roleRow-230vCm, .container-3EtAkD {
+    border-radius: var(--br-2);
+}
+
+.container-3i3IzO {
+    border-radius: var(--br-2);
+    padding: 10px;
+}
+
+.popout-1KHNAq {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.option-2eIyOn {
+    margin: 5px;
+}
+
+.select-1Ia3hD, .option-2eIyOn, .open-1FRZsK, .popout-1KHNAq, .popout-1KHNAq.popoutPositionTop-1GenHR {
+    border-radius: var(--br-2)!important;
+}
+
+.metadataName-1KMZtB, .topLine-3rZgHE, .name-3Uvkvr {
+    font-family: var(--font-display);
+}
+
+.scrollableContainer-15eg7h, .webkit-QgSAqd, .hasConnectedBar-1vN2JH {
+    border-radius: var(--br-1);
+}
+
+.botTag-7aX5WZ, .botTagVerified-2KCPMa {
+    border-radius: var(--br-3)!important;
+    padding: 1px;
+}
+
+.transitionGroup-bPT0qU, .sequencer-3QU0ck, .focusLock-2tveLW, .bodyWrapper-23FTiG, .scroller-2M3eAB, .root-g14mjS, .container-2ebMPP, .container-2O1UgZ, .userProfileOuter-1K_BYU, .button-cfOvv-, .searchResult-O9NDji {
+    border-radius: var(--br-1);
+}
+
+.header-1sd0RU {
+    border-radius: var(--br-1) var(--br-1) 0px 0px;
+}
+
+.tierBody-1d3UiS, .footer-1s73En {
+    border-radius: 0px 0px var(--br-2) var(--br-2);
+}
+
+.roundedBanner-TdlJGa, .tierHeader-3q9jIw {
+    border-radius: var(--br-2) var(--br-2) 0px 0px;
+}
+
+.mention {
+    border-radius: var(--br-2);
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: var(--font-display);
+}
+
+.message-2CShn3 {
+    border-radius: var(--br-2);
+    margin-left: 4px;
+}
+
+.message-2CShn3::before {
+    margin-left: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: var(--br-2);
+    width: 3px;
+}
+
+.container-2sjPya>* {
+    border-radius: var(--br-3);
+}
+
+.reactionSelected-1aMb2K, .group-LWHoGI, .connectedAccountContainer-2TWiXT, .listRow-Y5zoF8, .categoryItemDefaultCategory-3haEDq, .container-1SX9VC, .item-1BCeuB, .side-2ur1Qk .item-3XjbnG, .input-2g-os5, .role-2TIOKu, .layout-1qmrhw, .snowsgivingLink-1TZi3c, .layout-1LjVue, .interactive-iyXY_x, .item-1OdjEX, .container-2gUZhU, .wrapper-2vIMkT, .button-3bklZh {
+    border-radius: var(--br-2)!important;
+}
+
+.item-4m-12I {
+    margin: 2px;
+    border-radius: var(--br-3);
+}
+
+button {
+    font-family: var(--font-display);
+    border-radius: var(--br-2)!important;
+}
+
+.username-h_Y3Us {
+    font-family: var(--font-display);
+    font-size: 15px;
+}
+
+.menu-1QACrS {
+    border-radius: var(--br-1);
+}
+
+.content-1Tgc42, .container-2oNtJn, .content-1gYQeQ, .topPill-3DJJNV .item-3XjbnG {
+    border-radius: var(--br-2);
+}
+
+.searchBar-jGtisZ {
+    border-radius: var(--br-3);
+}
+
+button.searchBar-3TnChZ.searchBarComponent-3N7dCG {
+    text-align: center;
+    border-radius: var(--br-2);
+}
+
+ .privateChannels-oVe7HL, .header-3OsQeK, .container-1-ERn5, .container-1NXEtd, .sidebar-1tnWFu {
+    border-top-left-radius: var(--br-1);
+}
+
+.container-1PloNW {
+    border: solid 2px var(--background-accent);
+    border-radius: var(--br-1);
+}
+
+.contentPreview-3fWiuC {
+    border-radius: var(--br-2);
+}
+
+.imageWrapper-oMkQl4 {
+    border-radius: var(--br-3);
+}
+
+.topGuildEmojiBadge-3DiG2v {
+    border-radius: var(-br-2);
+}
+
+.gameIcon-1siQqm {
+    border-radius: var(--br-3);
+}
+
+.contentRegion-3HkfJJ { 
+    background-color: var(--background-tertiary);
+}
+
+.standardSidebarView-E9Pc3j, .contentTransitionWrap-1YD530, .contentTransitionWrap-1YD530, .sidebarRegionScroller-FXiQOh {
+    background-color: var(--background-tertiary)!important;
+}
+
+.customScroller-m1-jZn, .customContainer-dK1ozq, .contentRegionShownSidebar-fHXkEg, .contentColumn-1C7as6, .customColumn-2n-oKU, .contentTransitionWrap-1YD530, .contentColumn-1C7as6, .contentColumnDefault-3eyv5o {
+    border-top-left-radius: var(--br-1)!important;
+    background-color: var(--background-secondary-alt)!important;
+}
+
+header, .header-3OsQeK, .sidebar-1tnWFu, .searchBar-3TnChZ, .privateChannels-oVe7HL, .bannerImg-2PzH6z {
+    border-radius: var(--br-1) var(--br-1) 0px 0px!important;
+}
+
+main.container-2cd8Mz {
+    border-radius: var(--br-1) var(--br-1) 0px 0px;
+}
+
+.itemCard-3Etziu {
+    border-color: var(--background-secondary);
+}
+
+.addGamePopout-2SKNIV {
+    border-radius: var(--br-2);
+    border-color: transparent;
+    background-color: var(--background-secondary)!important;
+}
+
+.activeGame-1OdxzI {
+    border-radius: var(--br-2);
+}
+
+.grabber-2GQyvM {
+    border-radius: var(--br-3);
+}
+
+.item-3XjbnG.selected-g-kMVV.themed-2-lozF {
+    background-color: var(--background-secondary)!important;
+}
+
+.item-3XjbnG.themed-2-lozF:hover {
+    background-color: var(--background-secondary-alt)!important;
+}
+
+.background-Gjdjzm {
+    border-radius: var(--br-2);
+}
+
+.titleElevated-eN3exl, .stickyHeader-1Sunlx {
+    background-color: var(--background-secondary-alt);
+}
+
+button[aria-label="Open GIF picker"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Open sticker picker"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Begin Localized Stuff */
+  
+  button[aria-label="Open GIF picker"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Open sticker picker"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Dansk */
+  
+  button[aria-label="Åbn sticker-vælgeren"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Åbn GIF-vælger"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Deutsch */
+  
+  button[aria-label="Stickerauswahl öffnen"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="GIF-Auswahl öffnen"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Espanol */
+  
+  button[aria-label="Abrir selector de pegatinas"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Abrir selector de GIFs"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Francais */
+  
+  button[aria-label="Ouvrir le sélecteur d'autocollant"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Ouvrir l'onglet des GIF"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Hrvatski */
+  
+  button[aria-label="Otvori picker za naljepnice"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Otvori GIF picker"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Italiano */
+  
+  button[aria-label="Apri selettore di adesivi"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Apri selettore di GIF"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Lietuviskai */
+  
+  button[aria-label="Atidaryti lipdukų paieškos priemonę"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Atidaryti GIF paieškos priemonę"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Magyar */
+  
+  button[aria-label="Matricaválogató megnyitása"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="GIF válogató megnyitása"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Nederlands */
+  
+  button[aria-label="Stickerkiezer openen"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="GIF-kiezer openen"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Norsk */
+  
+  button[aria-label="Åpne klistremerkevelger"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Åpne GIF-velger"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Polski */
+  
+  button[aria-label="Otwórz wybór naklejek"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Otwórz wybieranie GIF-ów"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Portuges do Brasil */
+  
+  button[aria-label="Abrir selecionador de figurinhas"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Abrir o selecionador de GIFs"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Romana */
+  
+  button[aria-label="Deschide selectorul de stickere"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Deschide selectorul de GIF"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Suomi */
+  
+  button[aria-label="Avaa tarravalitsin"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Avaa GIF-valitsin"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Svenska */
+  
+  button[aria-label="Öppna dekalväljare"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Öppna GIF-väljare"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Tieng Viet */
+  
+  button[aria-label="Mở trình chọn sticker"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Mở trình chọn ảnh GIF"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Turkce */
+  
+  button[aria-label="Çıkartma seçiciyi aç"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="GIF seçiciyi aç"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Cestina */
+  
+  button[aria-label="Otevřít výběr samolepek"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Otevřít okno s GIFy"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Eyynvilka */
+  
+  button[aria-label="Άνοιγμα επιλογέα αυτοκόλλητων"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Άνοιγμα επιλογέα GIF"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* български */
+  
+  button[aria-label="Отвори избиране на стикери"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Отвори избиране на GIF"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* PYCCknn */
+  
+  button[aria-label="Открыть меню выбора стикеров"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Открыть меню GIF"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Ykpaihcbka */
+  
+  button[aria-label="Відкрити програму вибору стікерів"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="Відкрити програму вибору GIF"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Another Language */
+  
+  button[aria-label="स्टीकर पिकर खोलें"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="GIF पिकर खोलें"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Another Language */
+  
+  button[aria-label="เปิดตัวเลือกสติกเกอร์"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="เปิดตัวเลือก GIF"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Another Language */
+  
+  button[aria-label="打开贴纸选取器"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="打开 GIF 选取器"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Another Language */
+  
+  button[aria-label="スタンプピッカーを開く"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="GIFピッカーを開く"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Another Language */
+  
+  button[aria-label="開啟貼圖選取器"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="開啟 GIF 選取器"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* Another Language */
+  
+  button[aria-label="스티커 선택기 열기"] {
+      display: none;
+      color: transparent;
+  }
+  button[aria-label="GIF 선택기 열기"] {
+      display: none;
+      color: transparent;
+  }
+  
+  /* End Localized Stuff */
+  
+  
+  .sprite-2lxwfc {
+      background-image: url("https://livelaughlemon.github.io/purpura/multiselector.png");
+      background-position: 50%;
+      background-repeat: no-repeat;
+      width: 22px;
+      height: 22px;
+      display: block;
+  }
+
+.unread-36eUEm {
+    margin-left: 5px;
+    border-radius: var(--br-1);
+}
+
+.channelTextArea-1FufC0.channelTextArea-1VQBuV .scrollableContainer-15eg7h {
+    background: var(--background-primary);
+    border: solid 2px var(--background-accent);
+}
+
+.root-2s1-ri>:last-child {
+    background-color: var(--background-primary);
+    border-radius: 0px 0px var(--br-1) var(--br-1);
+}
+
+.root-2s1-ri {
+    border-radius: var(--br-1);
+}
+
+.spriteCanvas-1GzFop, .modalHeader-gQTY3L {
+    border-radius: var(--br-1) var(--br-1) 0px 0px!important;
+}
+
+.unreadBar-elBRZx, .tooltip-14MtrL {
+    border-radius: var(--br-1);
+}
+
+.tooltip-14MtrL {
+    background-color: var(--background-primary);
+    border: solid 1px var(--background-accent);
+}
+
+.tooltipPointer-3L49xb {
+    display: none;
+}
+
+.downloadLink-1OAglv {
+    font-family: var(--font-display);
+}
+
+.profilePanel-2PWEok .userPanelInnerThemed-2xZFjl .scrollerBase-_bVAAt {
+    margin: 8px;
+    border-radius: var(--br-1)!important;
+}
+
+.modal-3Crloo .wrapper-2bCXfR .imageWrapper-oMkQl4 {
+    animation-name: popin;
+    animation-duration: 0.35s;
+}
+
+.imageWrapper-oMkQl4 {
+    border-radius: var(--br-3);
+}
+
+.pill-2RsI5Q .item-2LIpTv {
+    border-radius: 10px!important;
+    margin-left: 2px;
+    width: 4px;
+}
+
+.blockquoteDivider-363utW {
+    background-color: var(--background-accent);
+}
+
+.content-3spvdd {
+    font-family: var(--font-display);
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.group-spacing-16 .divider-IqmEqJ.hasContent-1y12-u {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#floating-editor-window {
+    border-radius: var(--br-1);
+    border: solid 1px var(--background-accent);
+}
+
+.item-3XjbnG.selected-g-kMVV.themed-2-lozF, .item-3XjbnG.themed-2-lozF:hover {
+    background-color: transparent!important;
+}
+
+.perksModal-CLcR1c {
+    background-color: var(--background-primary)!Important;
+}
+
+.perk-19D_HN {
+    background-color: var(--background-secondary)!Important;
+}
+
+.footer-31IekZ, .modalFooter-2XY3GW {
+    background-color: var(--background-primary)!Important;
+}
+
+.inviteBannerUpsell-1t_LYM {
+    border-radius: var(--br-2);
+}
+
+*[type="button"] {
+    border-radius: var(--br-2);
+}
+
+.result-u66Ywh {
+    transition: 0.2s;
+}
+
+.controlButton-2PMNom { border-radius: 100px!important; }
+
+html.platform-linux .container-1eFtFS { padding-top: 10px; }
+
+.applicationStore-2nk7Lo { margin-right: 10px!important; border-top-left-radius: 10px; border-top-right-radius: 10px; }
+
+.inputDefault-Ciwd-S.input-3O04eu { border-radius: 7px; }
+
+.colorable-3rVGna.primaryDark-2UJt1G { background-color: var(--background-accent); }
+
+.theme-dark .quickSelectPopout-2F0PXw { border-radius: 7px; background-color: var(--background-accent); }
+
+.quickSelectPopoutOption-2E2UmS { margin: 5px; border-radius: 5px; }
+
+.quickSelectLabel-ArUyd9 { line-height: 15px; }
+
+.input-3O04eu { border-radius: 10px; }
+
+.contentRegion-3HkfJJ { margin-top: 10px; }
+
+.item-2LIpTv { margin-left: 2px; width: 4px; border-radius: 10px; }
+
+.card-m7VgZ8 { border-radius: 7px; }
+
+.pictureInPictureWindow-3ms5Zy { border-radius: 10px; }
+
+.icon-39rdLt { font-family: var(--font-primary)!important; }
+
+.textContentFooter-2JnNv8 { background: linear-gradient(0deg,hsl(var(--background-primary)/.97) 36px,hsl(var(--backgrund-primary)/.4))!important; }
